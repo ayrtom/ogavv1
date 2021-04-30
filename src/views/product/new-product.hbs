@@ -1,0 +1,109 @@
+<main class="container p-4">
+    <div class="col-md-6 mx-auto">
+        <div class="card text-center">
+            <div class="card-header">
+                <h3>Agregar Producto</h3>
+            </div>
+            <div class="card-body">
+                <form action="/product/add" method="POST" enctype="multipart/form-data">
+                    <!--title-->
+                    <div class="form-group">
+                        <input type="text" name="title" class="form-control" placeholder="Nombre" autofocus
+                            autocomplete="off" required>
+                    </div>
+                    <!--category-->
+                    <div class="input-group mb-3">
+                        <label class="input-group-text" for="inputGroupSelect01">Categoria</label>
+                        <select required class="form-select" id="inputGroupSelect01" name="category">
+                            <option></option>
+                            <option value="Nintendo">Nintendo</option>
+                            <option value="Playstation">Playstation</option>
+                            <option value="Xbox">Xbox</option>
+                        </select>
+                    </div>
+                    <!--subcategory-->
+                    <div class="input-group mb-3">
+                        <label class="input-group-text" for="inputGroupSelect01">Subcategoria</label>
+                        <select required class="form-select" id="inputGroupSelect01" name="subcategory">
+                            <option></option>
+                            <option value="Nintendo_Switch">Nintendo Switch</option>
+                            <option value="Nintendo_Wii_U">Nintendo WiiU</option>
+                            <option value="Nintendo_Wii">Nintendo Wii</option>
+                            <option value="Nintendo_3ds">Nintendo Switch</option>
+                            <option value="Nintendo_Retro">Nintendo Retro</option>
+                            <option value="Playstation_5">Playstation 5</option>
+                            <option value="Playstation_4">Playstation 4</option>
+                            <option value="Playstation_3">Playstation 3</option>
+                            <option value="Playstation_Vita">PsVita</option>
+                            <option value="Playstation_Retro">Playstation retro</option>
+                            <option value="Xbox_One">Xbox One</option>
+                            <option value="Xbox_360">Xbox 360</option>
+                            <option value="Xbox_retro">Xbox Retro</option>
+                            <option value="Retro">Juegos Retro en General</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <!--price-->
+                        <div class="form-group">
+                            <input type="text" name="price" class="form-control" placeholder="Precio" autofocus
+                                autocomplete="off" required>
+                        </div>
+                        <!--Description-->
+                        <div class="form-group">
+                            <textarea name="description" placeholder="Descripcion del juego" class="form-control"
+                                required></textarea>
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <!--input image-->
+                            <input type="file" name="image" class="form-control" id="image" accept="image/*"
+                                onchange="previewImage();" required>
+                        </div>
+                        <div class="form-group">
+                            <img id="preview" src="/logo.png" width="200dp" height="250dp">
+                        </div>
+                      <!--status-->
+                        <div class="input-group mb-3">
+                            <label class="input-group-text" for="inputGroupSelect01">Estado</label>
+                            <select required class="form-select" id="inputGroupSelect01" name="status">
+                                <option></option>
+                                <option value="Nuevo">Nuevo</option>
+                                <option value="Usado">Usado</option>
+
+                            </select>
+                        </div>
+                      <!--genre-->
+                        <div class="form-group">
+                            <input type="text" name="genre" class="form-control" placeholder="Genero" autofocus
+                                autocomplete="off" required>
+                        </div>
+
+                      <!--code_id-->
+                        <div class="form-group">
+                            <input type="text" name="code_id" class="form-control" placeholder="Codigo del producto"
+                                 autocomplete="off" required>
+                        </div>
+                      <!--isgift-->
+                        <div class="input-group mb-3">
+                            <label class="input-group-text" for="inputGroupSelect01">Estado</label>
+                            <select  class="form-select" id="inputGroupSelect01" name="isgift">
+                                <option></option>
+                                <option value="Regalo">Para Regalar</option>
+                                <option value="">No</option>
+
+                            </select>
+                        </div>
+
+
+
+                        <div class="form-group">
+                            <button class="btn btn-primary btn-block">Subir Producto</button>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</main>

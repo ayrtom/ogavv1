@@ -1,0 +1,64 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light ">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">
+      <img src="/logo.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
+      GAMESHOP
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/category">Categoria</a>
+        </li>
+        
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            categoria
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="/category/nintendo">Nintendo Switch</a></li>
+            <li><a class="dropdown-item" href="/category/sony">Playstation 4</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="/category/xbox">Xbox one</a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            acciones
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            {{#if user}}
+            <li><a class="dropdown-item" href="/product/add">Subir Producto</a></li>
+            <li><a class="dropdown-item" href="/product/best">Crear banner</a></li>
+
+            {{else}}
+            <li><a class="dropdown-item" href="/users/signup">Registrarse</a></li>
+            <li><a class="dropdown-item" href="/users/signin">Iniciar sesion</a></li>
+            {{/if}}
+            <li><a class="dropdown-item" href="/users/logout">salir</a></li>
+            
+          </ul>
+        </li>
+        
+      </ul>
+      <form class="d-flex" action="/product/findproduct" method="POST" autocomplete="off">
+        <input class="form-control me-2" name="title" type="search" placeholder="Buscar" aria-label="Search" autofocus>
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+
+
+
+       
