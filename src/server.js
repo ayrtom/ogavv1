@@ -19,7 +19,8 @@ app.engine('.hbs', exphbs({
     defaultLayout: 'main',
     layoutsDir: path.join(app.get('views'), 'layouts'),
     partialsDir: path.join(app.get('views'), 'partials'),
-    extname: '.hbs'
+    extname: '.hbs',
+
 }));
 app.set('view engine', '.hbs');
 
@@ -46,7 +47,8 @@ const storage = multer.diskStorage({
 app.set('trust proxy', 1)
 
 // Midlewares
-app.use(express.urlencoded({ extended: false }));
+
+app.use(express.urlencoded({ extended: true,limit: '50mb' }));
 app.use(multer({ storage: storage }).single('image'));
 app.use(morgan('dev'));
 app.use(methodOverride('_method'));
@@ -75,6 +77,10 @@ app.use(require('./routes/index.routes'));
 app.use(require('./routes/product.routes'));
 app.use(require('./routes/user.routes'));
 app.use(require('./routes/bestproduct.routes'));
+app.use(require('./routes/retroproduct.routes'));
+app.use(require('./routes/programingproduct.routes'));
+app.use(require('./routes/tarjetas.routes'));
+app.use(require('./routes/accesorios.routes'));
 
 
 // Static files

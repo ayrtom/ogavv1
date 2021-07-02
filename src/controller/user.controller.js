@@ -39,7 +39,7 @@ userCtrl.renderSigninForm = (req,res) =>{
 
 userCtrl.signin = passport.authenticate('local', {
     failureRedirect: '/users/signin',
-    successRedirect: '/category',
+    successRedirect: '/',
     failureFlash: true
 });
 userCtrl.logout = (req,res)=>{

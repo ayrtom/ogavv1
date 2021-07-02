@@ -1,8 +1,9 @@
 const { Schema, model } = require('mongoose');
 
 const ProductSchema = new Schema({
-    //title,category,subCategory,description,image_url,price,status,genre, code_id,isgift//
-    title: {
+    // required title category subcategory image_url nuevo usado programable
+    // non required description precio_nuevo precio_usado genre code_id isgift   cantidad_usados cantidad_nuevos solo_intercambio
+    title: { 
         type: String,
         required: true
     },
@@ -16,31 +17,68 @@ const ProductSchema = new Schema({
     },
     description: {
         type: String,
-        required: true
+        required: false
     },
     image_url: {
         type: String,
         required: true
     },
-    price: {
+    precio_nuevo:{
         type: Number,
-        required: true
+        required: false
     },
-    status: {
-        type: String,
-        require: true
-    }, 
+    precio_usado:{
+        type: Number,
+        required: false
+    },
+    nuevo:{
+        type:Boolean,
+        required:true
+    },
+    usado:{
+        type:Boolean,
+        required:true
+    },
     genre: {
         type: String,
         required: false
     }, 
     code_id: {
         type: Number,
-        require: true
+        require: false
     }, 
     isgift: {
-        type: String,
+        type: Boolean,
         require: false
+    },
+    programable:{
+        type:Boolean,
+        require:false
+    },
+    cantidad_usados:{
+        type:Number,
+        require:false
+    },
+    cantidad_nuevos:{
+        type:Number,
+        require:false
+    },
+    solo_intercambio:{
+        type:Boolean,
+        require:false
+    }
+    ,
+    video:{
+        type:String,
+        require:false
+    },
+    tienda:{
+        type:String,
+        require:false
+    },
+    accesorio:{
+        type:Boolean,
+        require:false
     }
 }, {
     timestamps: true

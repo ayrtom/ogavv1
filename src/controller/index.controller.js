@@ -3,6 +3,7 @@ const Banner = require('../models/best-product');
 
 indexCtrl.renderIndex = async(req,res) =>{
     const banner = await Banner.find().sort('title').lean();
+    console.log(__dirname);
     res.render('index',{banner});
 };
 

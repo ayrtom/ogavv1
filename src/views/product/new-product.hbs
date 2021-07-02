@@ -7,95 +7,114 @@
             <div class="card-body">
                 <form action="/product/add" method="POST" enctype="multipart/form-data">
                     <!--title-->
-                    <div class="form-group">
-                        <input type="text" name="title" class="form-control" placeholder="Nombre" autofocus
-                            autocomplete="off" required>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1"  style="background: red; color:white; border:2px solid black">Titulo</span>
+                        <input name="title" type="text" class="form-control" placeholder="nombre" aria-label="Username" autocomplete="off"
+                            aria-describedby="basic-addon1">
                     </div>
+                    
                     <!--category-->
                     <div class="input-group mb-3">
-                        <label class="input-group-text" for="inputGroupSelect01">Categoria</label>
-                        <select required class="form-select" id="inputGroupSelect01" name="category">
+                        <label class="input-group-text" for="inputGroupSelect01"
+                            style="background: red; color:white; border:2px solid black">Categoria</label>
+                        <select required class="form-select" id="categoria" name="category"
+                            onchange="optiontocheck(this);">
                             <option></option>
                             <option value="Nintendo">Nintendo</option>
                             <option value="Playstation">Playstation</option>
                             <option value="Xbox">Xbox</option>
+
                         </select>
                     </div>
                     <!--subcategory-->
                     <div class="input-group mb-3">
-                        <label class="input-group-text" for="inputGroupSelect01">Subcategoria</label>
-                        <select required class="form-select" id="inputGroupSelect01" name="subcategory">
+                        <label class="input-group-text" for="inputGroupSelect01"
+                            style="background: red; color:white; border:2px solid black">Subcategoria</label>
+                        <select required class="form-select" id="subcategoria" name="subcategory">
                             <option></option>
-                            <option value="Nintendo_Switch">Nintendo Switch</option>
-                            <option value="Nintendo_Wii_U">Nintendo WiiU</option>
-                            <option value="Nintendo_Wii">Nintendo Wii</option>
-                            <option value="Nintendo_3ds">Nintendo Switch</option>
-                            <option value="Nintendo_Retro">Nintendo Retro</option>
-                            <option value="Playstation_5">Playstation 5</option>
-                            <option value="Playstation_4">Playstation 4</option>
-                            <option value="Playstation_3">Playstation 3</option>
-                            <option value="Playstation_Vita">PsVita</option>
-                            <option value="Playstation_Retro">Playstation retro</option>
-                            <option value="Xbox_One">Xbox One</option>
-                            <option value="Xbox_360">Xbox 360</option>
-                            <option value="Xbox_retro">Xbox Retro</option>
-                            <option value="Retro">Juegos Retro en General</option>
+                            <option id="MemberShip" value="MemberShip">Menbresia</option>
+                            <option id="Gift Card" value="Gift Card">Gift Card</option>
+                            <option id="NS" value="Nintendo Switch" style="display: none;">Nintendo Switch</option>
+                            <option id="NWU" value="Nintendo Wii U" style="display: none;">Nintendo Wii U</option>
+                            <option id="NW" value="Nintendo Wii" style="display: none;">Nintendo Wii</option>
+                            <option id="GC" value="Gamecube" style="display: none;">Gamecube</option>
+                            <option id="N3DS" value="Nintendo 3ds" style="display: none;">Nintendo 3ds</option>
+                            <option id="NDS" value="Nintendo Nds" style="display: none;">Nintendo Nds</option>
+                            <option id="NES" value="Nintendo Nes" style="display: none;">NES</option>
+                            <option id="SNES" value="Super Nintendo" style="display: none;">Super Nintendo</option>
+                            <option id="N64" value="Nintendo 64" style="display: none;">Nintendo 64</option>
+                            <option id="GBC" value="Gameboy Color" style="display: none;">Gameboy Color</option>
+                            <option id="GBA" value="Gameboy Advance" style="display: none;">Gameboy Advance</option>
+                            <option id="PS5" value="Playstation 5" style="display: none;">Playstation 5</option>
+                            <option id="PS4" value="Playstation 4" style="display: none;">Playstation 4</option>
+                            <option id="PS3" value="Playstation 3" style="display: none;">Playstation 3</option>
+                            <option id="PS2" value="Playstation 2" style="display: none;">Playstation 2</option>
+                            <option id="PS1" value="Playstation 1" style="display: none;">Playstation 1</option>
+                            <option id="PSVITA" value="Playstation Vita" style="display: none;">Ps Vita</option>
+                            <option id="PSP" value="PSP" style="display: none;">PSP</option>
+                            <option id="XO" value="Xbox One" style="display: none;">Xbox One</option>
+                            <option id="X360" value="Xbox 360" style="display: none;">Xbox 360</option>
+                            <option id="X" value="Xbox" style="display: none;">Xbox</option>
+                            <option id="otros" value="otros">Juegos Retro en General</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <!--price-->
-                        <div class="form-group">
-                            <input type="text" name="price" class="form-control" placeholder="Precio" autofocus
-                                autocomplete="off" required>
-                        </div>
-                        <!--Description-->
-                        <div class="form-group">
-                            <textarea name="description" placeholder="Descripcion del juego" class="form-control"
-                                required></textarea>
+
+                        <!--pirate-->
+                        <div class="input-group mb-3">
+                            <label class="input-group-text" for="inputGroupSelect01"
+                                style="background: red; color:white; border:2px solid black">Para grabar en
+                                consola</label>
+                            <select required class="form-select" id="inputGroupSelect01" name="programable">
+                                <option value="false">Por Defecto</option>
+                                <option value="true">Si</option>
+                                <option value="false">No</option>
+                            </select>
                         </div>
 
                         <div class="input-group mb-3">
+                            <label class="input-group-text" for="inputGroupSelect01"
+                                style="background: red; color:white; border:2px solid black">Accesorio</label>
+                            <select class="form-select" id="inputGroupSelect01" name="accesorio">
+                                <option value="false">default</option>
+                                <option value="true">Si</option>
+                                <option value="false">No</option>
+
+                            </select>
+                        </div>
+                        <!--Description-->
+
+
+                        <div class="input-group mb-3">
                             <!--input image-->
-                            <input type="file" name="image" class="form-control" id="image" accept="image/*"
-                                onchange="previewImage();" required>
+                            <input type="file" name="image" class="form-control" id="image" accept="image/*" required
+                                onchange="previewImage();">
                         </div>
                         <div class="form-group">
                             <img id="preview" src="/logo.png" width="200dp" height="250dp">
                         </div>
-                      <!--status-->
+
                         <div class="input-group mb-3">
-                            <label class="input-group-text" for="inputGroupSelect01">Estado</label>
-                            <select required class="form-select" id="inputGroupSelect01" name="status">
-                                <option></option>
-                                <option value="Nuevo">Nuevo</option>
-                                <option value="Usado">Usado</option>
+                            <label class="input-group-text" for="inputGroupSelect01"
+                                style="background: red; color:white; border:2px solid black">Nuevo</label>
+                            <select required class="form-select" id="inputGroupSelect01" name="nuevo">
+                                <option>Escoje una Opcion</option>
+                                <option value="true">Hay nuevo</option>
+                                <option value="false">No hay</option>
 
                             </select>
                         </div>
-                      <!--genre-->
-                        <div class="form-group">
-                            <input type="text" name="genre" class="form-control" placeholder="Genero" autofocus
-                                autocomplete="off" required>
-                        </div>
-
-                      <!--code_id-->
-                        <div class="form-group">
-                            <input type="text" name="code_id" class="form-control" placeholder="Codigo del producto"
-                                 autocomplete="off" required>
-                        </div>
-                      <!--isgift-->
                         <div class="input-group mb-3">
-                            <label class="input-group-text" for="inputGroupSelect01">Estado</label>
-                            <select  class="form-select" id="inputGroupSelect01" name="isgift">
-                                <option></option>
-                                <option value="Regalo">Para Regalar</option>
-                                <option value="">No</option>
+                            <label class="input-group-text" for="inputGroupSelect01"
+                                style="background: red; color:white; border:2px solid black">Usado</label>
+                            <select required class="form-select" id="inputGroupSelect01" name="usado">
+                                <option>Escoje una Opcion</option>
+                                <option value="true" style="font-size: 15px;">Hay usado</option>
+                                <option value="false">No hay</option>
 
                             </select>
                         </div>
-
-
-
                         <div class="form-group">
                             <button class="btn btn-primary btn-block">Subir Producto</button>
                         </div>

@@ -1,0 +1,96 @@
+const { title, description, category, price, subcategory, status, genre, code_id, isgift,pirate,stock } = req.body;
+    const newProduct = await Product.findOne({ title: { $regex: title, $options: 'i' }, category: { $regex: category, $options: 'i' }, subcategory: { $regex: subcategory, $options: 'i' }, status: { $regex: status, $options: 'i' } });
+
+    if (newProduct == null) {
+
+        const Image_name = req.body.title.replace(/\s/g, "");
+        const image_url = `/image/${category}/${subcategory}/` + Image_name + '.jpg'
+        const image_raw_root_path = path.join(__dirname,`../public/image/${category}/${subcategory}/${req.file.filename}`);
+        const path_file_rename = path.join(__dirname , `../public${image_url}`);
+        const product = new Product({ title, description, category, price, image_url, subcategory, genre, code_id, isgift, status,pirate,stock });
+        const productsave = await product.save();
+        console.log(image_raw_root_path);
+        console.log(path_file_rename);
+        console.log(product);
+
+        if(status == 'Usado'){
+            if(fs.existsSync(path_file_rename)){
+                fs.unlink(path.resolve(image_raw_root_path));;
+                console.log('Archivo usado no necesita la imagen porque existe')
+                req.flash('error_msg','Imagen ya existente en un producto nuevo')
+                res.redirect('/');
+            }else{
+                fs.rename(image_raw_root_path, path_file_rename, function (err) {
+                    if (err) console.log('ERROR: ' + err);
+                    console.log('producto usado rename file...')
+                });
+                console.log('usado renamed');
+                req.flash('success_msg','archivo usado renombrado');
+                res.redirect('/');
+            }
+        }else{
+            if(fs.existsSync(image_raw_root_path)){
+                console.log('raw file rename......')
+                fs.rename(image_raw_root_path, path_file_rename, function (err) {
+                    if (err) console.log('ERROR: ' + err);
+                    console.log('rename file...')
+                });
+                console.log('renamed');
+                req.flash('success_msg','archivo renombrado');
+                res.redirect('/');
+            }
+        }
+ 
+    } else {
+        req.flash('error_msg', 'El producto ya existe');
+        const path_image_category = path.join(`./public/image/${req.body.category}/${req.body.subcategory}/` + req.file.filename);
+        console.log(path_image_category)
+        fs.unlink(path.resolve(path_image_category));;
+        console.log('producto ya existe: ' + req.file.filename);
+        res.redirect('/');
+    }
+
+    <div class="input-group mb-3">
+    <label class="input-group-text" for="inputGroupSelect01">genero</label>
+    <select class="form-select" id="inputGroupSelect01" name="genre">
+        <option></option>
+        <option value="Aventura">Aventura</option>
+        <option value="Disparos">Disparos</option>
+        <option value="Educativos">Educativos</option>
+        <option value="Estrategia">Estrategia</option>
+        <option value="Lucha">Lucha</option>
+        <option value="Survival horror">Survival horror</option>
+        <option value="Rol">Rol</option>
+        <option value="Musicales">Musicales</option>
+        <option value="Party games">Party games</option>
+        <option value="Simulación">Simulación</option>
+        <option value="Deportivo">Deportivo</option>
+        <option value="Carreras">Carreras</option>
+        <option value="No lineal">No lineal</option>
+        <option value="Aventura gráfica">Aventura gráfica</option>
+        <option value="Rpg">Rpg</option>
+        <option value="Jrpg">Jrpg</option>
+        <option value="Plataformas">Plataformas</option>
+        <option value="Hack and slash">Hack and slash</option>
+        <option value="Puzzles">Puzzles</option>
+        <option value="Naves">Naves</option>
+        <option value="Simulación social">Simulación social</option>
+            
+    </select>
+    
+    <div class="form-group">
+                            <input type="text" name="code_id" class="form-control" placeholder="Codigo del producto"
+                                 autocomplete="off" >
+                        </div>
+                      <!--isgift-->
+                        <div class="input-group mb-3">
+                            <label class="input-group-text" for="inputGroupSelect01">Regalo?</label>
+                            <select  class="form-select" id="inputGroupSelect01" name="isgift">
+                                <option></option>
+                                <option value="Regalo">Para Regalar</option>
+                                <option value="">No</option>
+
+                            </select>
+                        </div>
+
+</div>

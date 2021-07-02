@@ -6,46 +6,76 @@
             </div>
 
             <div class="card-body">
-                <div class="form-group">
-                    <h4 class="form-control">{{productId.title}}</h4>
+                <div class="base">
+                    <h4>{{productId.title}}</h4>
                 </div>
-                <div class="form-group" >
-                    <img src="{{productId.image_url}}" width="350" height="300">
+
+                <div class="base">
+                    <img src="{{productId.image_url}}" width="250" height="400">
                 </div>
-                <div class="form-group">
-                    <h4 class="form-control">{{productId.category}}</h4>
+                <div class="base">
+                    <h4 class="form-control">{{productId.subcategory}}</h4>
                 </div>
-                <div class="form-group">
-                    <p class=" form-control card-text fw-bold">{{productId.price}}</p>
+                {{#if user}}
+                {{#if productId.usado}}
+                <div class="base">
+                    <p class=" form-control card-text fw-bold">el producto usado esta {{productId.tienda}}                    </p>
                 </div>
+                {{/if}}
+                {{#if productId.solo_intercambio}}
+                <div class="base">
+                    <p class=" form-control card-text fw-bold">Usado Solo Disponible Por Intercambio                    </p>
+                </div>
+                {{/if}}
+                {{#if productId.precio_nuevo}}
+                <div class="base">
+                    <p class=" form-control card-text fw-bold">Nuevo &nbsp; $:{{productId.precio_nuevo}}.00 &nbsp; Soles
+                    </p>
+                </div>
+                {{/if}}
+                {{#if productId.precio_usado}}
+                <div class="base">
+                    <p class=" form-control card-text fw-bold">Usado &nbsp; $:{{productId.precio_usado}}.00 &nbsp; Soles
+                    </p>
+                </div>
+                {{/if}}
+                {{/if}}
                 <div class="form-group">
                     <textarea name="description" class="form-control">{{productId.description}}</textarea>
                 </div>
+                {{#if productId.video}}
+                <div class="embed-responsive embed-responsive-16by9" style="margin-bottom: 10px;">
+                    <iframe class="embed-responsive-item" src="{{productId.video}}"
+                        allowfullscreen></iframe>
+                </div>
+                {{/if}}
                 {{#if user}}
+                <div>
+                    <h3 class="form-control">Codigo: {{productId.code_id}}</h4>
+                </div>
+
                 <div class="form-group">
                     <form action="/product/edit/{{productId._id}}" method="GET">
-                    <button class="btn btn-primary btn-block" type="submit">
+                        <button class="btn btn-primary btn-block" type="submit">
                             Editar
-                        </button>    
-                </form>
+                        </button>
+                    </form>
                 </div>
-                {{/if}}
 
-                {{#if user}}
                 <div class="form-group">
-                   <form action="/product/delete/{{productId._id}}?_method=DELETE" method="POST">
-                    <input type="hidden" name="_method" value="DELETE">
-                    <button type="submit" class="btn btn-danger btn-block btn-sm">
-                        Delete
-                    </button>
-                </form>
+                    <form action="/product/delete/{{productId._id}}?_method=DELETE" method="POST">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button type="submit" class="btn btn-danger btn-block btn-sm">
+                            Delete
+                        </button>
+                    </form>
                 </div>
                 {{/if}}
 
-                
-                
-                
-                
+
+
+
+
 
             </div>
         </div>

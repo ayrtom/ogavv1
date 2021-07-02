@@ -1,5 +1,5 @@
 <main class="container p-4">
-    <div class="col-md-4 mx-auto">
+    <div class="col-md-6 mx-auto">
         <div class="card text-center">
             <div class="card-header">
                 <h3>Modificando Producto</h3>
@@ -7,22 +7,159 @@
             
             <div class="card-body">
                 
-                <form action="/product/edit/{{productId._id}}?_method=PUT" method="POST" autocomplete="off">
+                <form action="/product/edit/{{productId._id}}?_method=PUT" method="POST" autocomplete="off" enctype="multipart/form-data">
                 <input type="hidden" name="_method" value="PUT">
-                    <div class="form-group">
-                        <input type="text" name="title" class="form-control" value="{{productId.title}}">
+                    <!--title-->
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Titulo</span>
+                        <input type="text" name="title" class="form-control" value="{{productId.title}}" placeholder="Nombre">
+                    </div>
+                    <!--Categoria-->
+                    <div class="input-group mb-3" style="display: none;">
+                        
+                        <input type="text" name="category" class="form-control" value="{{productId.category}}" placeholder="Nombre" style="display: none;">
+                    </div>
+                    <div class="input-group mb-3" style="display: none;">
+                        
+                        <input type="text" name="original_name" class="form-control" value="{{productId.title}}" placeholder="Nombre" style="display: none;">
+                    </div>
+                    <!--subcategoria-->
+                    <div class="input-group mb-3" style="display: none;">
+                        
+                        <input type="text" name="subcategory" class="form-control" value="{{productId.subcategory}}" placeholder="Nombre" style="display: none;" >
+                    </div>
+                    <!--precio nuevo-->
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Precio Nuevo</span>
+                        <input type="number" name="precio_nuevo" class="form-control" value="{{productId.precio_nuevo}}" placeholder="Precio del Juego Nuevo">
+                    </div>
+                    <!--precio usado-->
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Precio Usado</span>
+                        <input type="number" name="precio_usado" class="form-control" value="{{productId.precio_usado}}" placeholder="Precio del juego usado">
+                    </div>
+                    <!--cantidad_nuevo-->
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">cantidad nuevos</span>
+                        <input type="number" name="cantidad_nuevos" class="form-control" value="{{productId.cantidad_nuevos}}" placeholder="Precio del Juego Nuevo">
+                    </div>
+                    <!--cantidad_usado-->
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">cantidad usados</span>
+                        <input type="number" name="cantidad_usados" class="form-control" value="{{productId.cantidad_usados}}" placeholder="Precio del juego usado">
+                    </div>
+                    <!--image-->
+                    <div class="input-group mb-3">
+                            <!--input image-->
+                            <input type="file" name="image" class="form-control" id="image" accept="image/*"
+                                onchange="previewImage();" >
+                        </div>
+                        <div class="form-group">
+                            <img id="preview" src="/logo.png" width="200dp" height="250dp">
+                        </div>
+
+                        <div class="muestra">
+                            <img id="original" src="{{productId.image_url}}" width="300dp" height="300dp">
+                        </div>
+
+                        <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Video</span>
+                        <input type="text" name="video" class="form-control" value="{{productId.video}}" placeholder="url">
+                    </div>
+
+                    <!--nuevo-->
+                    <div class="input-group mb-3">
+                        <label class="input-group-text" for="inputGroupSelect01">nuevo</label>
+                        <select class="form-select" id="inputGroupSelect01" name="nuevo">
+                            <option value="{{productId.nuevo}}">No Hacer Cambios: {{productId.nuevo}}</option>
+                            <option value="true">Hay Nuevo</option>
+                            <option value="false">No hay</option>
+                            
+                            
+                        </select>
+                    </div>
+                    <!--usado-->
+                    <div class="input-group mb-3">
+                        <label class="input-group-text" for="inputGroupSelect01">usado</label>
+                        <select class="form-select" id="inputGroupSelect01" name="usado">
+                            <option value="{{productId.usado}}">No Hacer Cambios: {{productId.usado}}</option>
+                            <option value="true">Hay Usado</option>
+                            <option value="false">No Hay</option>
+                           
+                            
+                        </select>
+                    </div>
+                     <!--solo_intercambio-->
+                    <div class="input-group mb-3">
+                        <label class="input-group-text" for="inputGroupSelect01">Para Intercambiar</label>
+                        <select class="form-select" id="inputGroupSelect01" name="solo_intercambio">
+                            {{#if productId.solo_intercambio}}
+                            <option value="false">por Defecto es {{productId.solo_intercambio}}</option>
+                            {{/if}}
+                            <option value="false">por Defecto</option>
+                            <option value="true">Si</option>
+                            <option value="false">No</option>
+                           
+                            
+                        </select>
+                    </div>
+                     <!--accesorio-->
+                    <div class="input-group mb-3">
+                        <label class="input-group-text" for="inputGroupSelect01">Accesorio</label>
+                        <select class="form-select" id="inputGroupSelect01" name="accesorio">
+                            <option value="{{productId.accesorio}}">por Defecto es {{productId.accesorio}}</option>
+                            <option value="true">Si</option>
+                            <option value="false">No</option>
+                            
+                            
+                        </select>
+                    </div>
+                    <!--regalo-->
+                    <div class="input-group mb-3">
+                        <label class="input-group-text" for="inputGroupSelect01">Se Puede Regalar</label>
+                        <select class="form-select" id="inputGroupSelect01" name="isgift">
+                             {{#if productId.isgift}}
+                            <option value="false">por Defecto es {{productId.isgift}}</option>
+                            {{/if}}
+                            <option value="false">por Defecto</option>
+                            <option value="true">Si</option>    
+                            <option value="false">No</option>
+                           
+                            
+                        </select>
+                    </div>
+                    <!--programable-->
+                     <div class="input-group mb-3">
+                        <label class="input-group-text" for="inputGroupSelect01">Para grabar en consola</label>
+                        <select class="form-select" id="inputGroupSelect01" name="programable">
+                            <option value="{{productId.programable}}">No Hacer Cambios: {{productId.programable}}</option>
+                            <option value="true">Si</option>
+                            <option value="false">No</option>
+                        </select>
+                    </div>
+                    <!--code_id-->
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">codigo</span>
+                        <input type="text" name="code_id" class="form-control" value="{{productId.code_id}}" placeholder="Codigo del producto">
+                    </div>
+                     <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Tienda</span>
+                        <input type="text" name="tienda" class="form-control" value="{{productId.tienda}}" placeholder="donde esta el producto">
                     </div>
                     <div class="form-group">
-                        <input type="text" name="price" class="form-control" value="{{productId.price}}">
+                        <!--Description-->
+                        <textarea name="description" class="form-control" placeholder="Datos">{{productId.description}}</textarea>
                     </div>
-                    <div class="form-group">
-                        <textarea name="description" class="form-control">{{productId.description}}</textarea>
-                    </div>
+                    <!--Submit-->
                     <div class="form-group">
                         {{#if user}}
                         <button class="btn btn-primary btn-block" type="submit">
                             Guardar
                         </button>
+
+                        <div>
+                            <a href="" class="btn btn-primary btn-block" style="margin:10px 0;background: red; color:white"> salir</a>
+                        </div>
                         {{/if}}
                     </div>
                 </form>

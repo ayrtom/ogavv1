@@ -1,36 +1,184 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light ">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
     <a class="navbar-brand" href="/">
-      <img src="/logo.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
-      GAMESHOP
+      <img src="/logo.png" alt="" width="165" height="24" class="d-inline-block align-text-top">
     </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        {{#if user}}
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/category">Categoria</a>
+          <a class="nav-link active" aria-current="page" href="/category">Todo</a>
         </li>
-        
+        {{/if}}
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-            aria-expanded="false">
-            categoria
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            Switch
           </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="/category/nintendo">Nintendo Switch</a></li>
-            <li><a class="dropdown-item" href="/category/sony">Playstation 4</a></li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li><a class="dropdown-item" href="/category/xbox">Xbox one</a></li>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            
+            <li><a class="dropdown-item" href="/category/nintendo/nintendo_switch/nuevo">Nuevo</a></li>
+            <hr class="dropdown-divider">
+            <li><a class="dropdown-item" href="/category/nintendo/nintendo_switch/usado">Usado</a></li>
+            <hr class="dropdown-divider">
+            <li><a class="dropdown-item" href="/category/nintendo/nintendo_switch/descuento_nuevos">Descuento en Nuevos</a></li>
+            <hr class="dropdown-divider">
+            <li><a class="dropdown-item" href="/category/nintendo/nintendo_switch/descuento_usados">Descuento en Usados</a></li>
+            
           </ul>
         </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            Ps5
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            
+            <li><a class="dropdown-item" href="/category/sony/ps5/nuevo">Nuevo</a></li>
+            <hr class="dropdown-divider">
+            <li><a class="dropdown-item" href="/category/sony/ps5/usado">Usado</a></li>
+            <hr class="dropdown-divider">
+            <li><a class="dropdown-item" href="/category/sony/ps5/precio">Precio</a></li>
+            
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            PS4
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+             <li><a class="dropdown-item" href="/category/sony/playstation_4/nuevo">Nuevo</a></li>
+              <hr class="dropdown-divider">
+              <li><a class="dropdown-item" href="/category/sony/playstation_4/usado">Usado</a></li>
+              <hr class="dropdown-divider">
+              <li><a class="dropdown-item" href="/category/sony/playstation_4/precio">Precio</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            Xbox One
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+           <li><a class="dropdown-item" href="/category/xbox/xbox_one/nuevo">Nuevo</a></li>
+              <hr class="dropdown-divider">
+              <li><a class="dropdown-item" href="/category/xbox/xbox_one/usado">Usado</a></li>
+              <hr class="dropdown-divider">
+              <li><a class="dropdown-item" href="/category/xbox/xbox_one/precio">Precio</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            Tarjetas
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <li><a class="dropdown-item" href="/category/nintendo/tarjeta">Gift Card Nintendo</a></li>
+              <hr class="dropdown-divider">
+              <li><a class="dropdown-item" href="/category/sony/tarjeta">Gift Card Sony</a></li>
+              <hr class="dropdown-divider">
+              <li><a class="dropdown-item" href="/category/xbox/tarjeta">Gift Card Xbox</a></li>
+              <hr class="dropdown-divider">
+              <li><a class="dropdown-item" href="/category/sony/menbresia">Playstation Plus</a></li> 
+          </ul>
+        </li>
+        <li class="nav-item dropdown has-megamenu">
+				<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"> Otros  </a>
+				<div class="dropdown-menu megamenu" role="menu">
+					<div class="row g-3">
+						<div class="col-lg-3 col-6">
+							<div class="col-megamenu">
+								<h6 class="title">Retro nintendo</h6>
+								<ul class="list-unstyled">
+									<li><a href="/category/nintendo/nintendo_nes">nintendo</a></li>
+									<li><a href="/category/nintendo/super_nintendo">super nintendo</a></li>
+                  <li><a href="/category/nintendo/nintendo_64">nintendo 64</a></li>
+                  <li><a href="/category/nintendo/gamecube">gamecube</a></li>
+                  <li><a href="/category/nintendo/nintendo_wii">nintendo wii</a></li>
+                  <li><a href="/category/nintendo/nintendo_wii_u">nintendo wii u</a></li>
+									<li><a href="/category/nintendo/gameboy_color">gameboy color</a></li>
+									<li><a href="/category/nintendo/gameboy_advance">gameboy advance</a></li>
+									<li><a href="/category/nintendo/nintendo_ds">nintendo ds</a></li>
+									<li><a href="/category/nintendo/nintendo_3ds">nintendo 3ds</a></li>
+								</ul>
+							</div>  <!-- col-megamenu.// -->
+						</div><!-- end col-3 -->
+						<div class="col-lg-3 col-6">
+							<div class="col-megamenu">
+								<h6 class="title">Retro Sony</h6>
+								<ul class="list-unstyled">
+									<li><a href="/category/sony/playstation_1">Playstation 1</a></li>
+									<li><a href="/category/sony/playstation_2">Playstation 2</a></li>
+									<li><a href="/category/sony/playstation_3">Playstation 3</a></li>
+									<li><a href="/category/sony/psp">PSP</a></li>
+									<li><a href="/category/sony/psp_vita">PSvita</a></li>
+								</ul>
+							</div>  <!-- col-megamenu.// -->
+						</div><!-- end col-3 -->
+						<div class="col-lg-3 col-6">
+							<div class="col-megamenu">
+								<h6 class="title">Retro Xbox</h6>
+								<ul class="list-unstyled">
+									<li><a href="/category/xbox/xbox_360">Xbox 360</a></li>
+									<li><a href="/category/xbox/xbox">Xbox</a></li>
+								</ul>
+							</div>  <!-- col-megamenu.// -->
+						</div>    
+						<div class="col-lg-3 col-6">
+							<div class="col-megamenu">
+								<h6 class="title">accesorios</h6>
+								<ul class="list-unstyled">
+									<li><a href="/nintendo/switch/accesorio">Nintendo Switch</a></li>
+									<li><a href="/playstation/ps4/accesorio">Playstation 4</a></li>
+									<li><a href="#">Custom Menu</a></li>
+									<li><a href="#">Custom Menu</a></li>
+									<li><a href="#">Custom Menu</a></li>
+									<li><a href="#">Custom Menu</a></li>
+								</ul>
+							</div>  <!-- col-megamenu.// -->
+						</div><!-- end col-3 -->
+            <div class="col-lg-3 col-6">
+							<div class="col-megamenu">
+								<h6 class="title">Programacion nintendo</h6>
+								<ul class="list-unstyled">
+									<li><a href="/programacion/nds">nds</a></li>
+									<li><a href="/programacion/3ds">3ds</a></li>
+									<li><a href="/programacion/wii">wii</a></li>
+									<li><a href="/programacion/wiiu">wiiu</a></li>
+									<li><a href="/programacion/switch">switch</a></li>
+									<li><a href="/programacion/gameboy">gameboy</a></li>
+                  <li><a href="/programacion/gameboyadvance">gameboy advance</a></li>
+                  <li><a href="/programacion/nes">nes</a></li>
+                  <li><a href="/programacion/snes">snes</a></li>
+                  <li><a href="/programacion/n64">n64</a></li>
+                  <li><a href="/programacion/gamecube">gamecube</a></li>
+								</ul>
+							</div>  <!-- col-megamenu.// -->
+						</div><!-- end col-3 -->
+            <div class="col-lg-3 col-6">
+							<div class="col-megamenu">
+								<h6 class="title">Programacion sony</h6>
+								<ul class="list-unstyled">
+									<li><a href="/programacion/ps4">ps4</a></li>
+									<li><a href="/programacion/ps3">ps3</a></li>
+									<li><a href="/programacion/ps2">ps2</a></li>
+									<li><a href="/programacion/ps1">ps1</a></li>
+									<li><a href="/programacion/psp">psp</a></li>
+									<li><a href="/programacion/pspvita">pspvita</a></li>
+								</ul>
+							</div>  <!-- col-megamenu.// -->
+						</div><!-- end col-3 -->
+					</div><!-- end row --> 
+				</div> <!-- dropdown-mega-menu.// -->
+			</li>
       </ul>
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item dropdown">
+        <li class="nav-item dropdown margin-right">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
             aria-expanded="false">
             acciones
@@ -38,20 +186,17 @@
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             {{#if user}}
             <li><a class="dropdown-item" href="/product/add">Subir Producto</a></li>
-            <li><a class="dropdown-item" href="/product/best">Crear banner</a></li>
-
+            <!--<li><a class="dropdown-item" href="/product/best">Crear banner</a></li>-->
             {{else}}
             <li><a class="dropdown-item" href="/users/signup">Registrarse</a></li>
             <li><a class="dropdown-item" href="/users/signin">Iniciar sesion</a></li>
             {{/if}}
-            <li><a class="dropdown-item" href="/users/logout">salir</a></li>
-            
+            <li><a class="dropdown-item" href="/users/logout">salir</a></li> 
           </ul>
-        </li>
-        
+        </li>  
       </ul>
       <form class="d-flex" action="/product/findproduct" method="POST" autocomplete="off">
-        <input class="form-control me-2" name="title" type="search" placeholder="Buscar" aria-label="Search" autofocus>
+        <input class="form-control me-2" name="title" type="search" placeholder="Buscar" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
     </div>

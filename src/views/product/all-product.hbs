@@ -10,27 +10,20 @@
                 </div>
                 <div class="card-body">
                     <!--image title-->
+                    <div class="base">
                     <h4 class="card-title text-center fw-bold">
                         {{title}}
-
+                        </div>
                     </h4>
                     <!--image price-->
-                    <p class="card-text text-center">${{price}}</p>
+                    <div class="base">
+                    <p class="card-text text-center">{{subcategory}}</p>
+                    </div>
                     <!--Delete-->
-
-
-
-                    <form action="/product/details/{{_id}}" method="GET">
-                        <button type="submit" class="btn btn-primary btn-block btn-sm">
-                            Detalles
-                        </button>
+                    <form action="" method="GET">
+                          <a href="/product/details/{{_id}}" class="btn btn-primary btn-block btn-sm" type="submit" >Detalles</a>
+                       
                     </form>
-
-
-
-
-
-
                 </div>
             </div>
         </div>
